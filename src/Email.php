@@ -350,6 +350,7 @@ class Email
             $message .= 'Content-Type: multipart/alternative; boundary="alt-' . $boundary . '"' . self::CRLF . self::CRLF;
         } else {
             $this->headers['Content-Type'] = 'multipart/alternative; boundary="alt-' . $boundary . '"';
+            $message = '';
         }
 
         if (!empty($this->textMessage)) {
