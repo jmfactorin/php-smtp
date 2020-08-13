@@ -344,9 +344,11 @@ class Email
 
         $boundary = md5(uniqid(microtime(true), true));
 
+        $message = "";
+        
         if (!empty($this->attachments)) {
             $this->headers['Content-Type'] = 'multipart/mixed; boundary="mixed-' . $boundary . '"';
-            $message = '--mixed-' . $boundary . self::CRLF;
+            $message .= '--mixed-' . $boundary . self::CRLF;
             $message .= 'Content-Type: multipart/alternative; boundary="alt-' . $boundary . '"' . self::CRLF . self::CRLF;
         } else {
             $this->headers['Content-Type'] = 'multipart/alternative; boundary="alt-' . $boundary . '"';
